@@ -17,7 +17,7 @@ import type {
   WhatsAppMessage,
 } from "@/lib/types";
 
-const API_URL = process.env.DJANGO_API_URL ?? "http://127.0.0.1:8000";
+const API_URL = (process.env.DJANGO_API_URL ?? "http://127.0.0.1:8000").replace(/\/$/, "");
 
 export class ApiError extends Error {
   status: number;

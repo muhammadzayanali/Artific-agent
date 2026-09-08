@@ -14,6 +14,19 @@ def health(_request):
     return Response({"ok": True, "service": "artificagent-api"})
 
 
+@api_view(["GET"])
+@permission_classes([AllowAny])
+def root(_request):
+    return Response(
+        {
+            "service": "ArtificAgent API",
+            "status": "online",
+            "health": "/api/health/",
+            "login": "/api/auth/login/",
+            "docs": "Use the Netlify frontend at https://artificagent.netlify.app",
+        }
+    )
+
 @api_view(["POST"])
 @permission_classes([AllowAny])
 def login(request):
