@@ -1,6 +1,7 @@
-# Railway service config for the Django API (monorepo rootDirectory = backend).
+# Railway service config for the Django API.
 [build]
-builder = "NIXPACKS"
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
 
 [deploy]
 startCommand = "bash start.sh"
