@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ArtificAgent">
+  <rect width="64" height="64" rx="14" fill="#0A0A0A"/>
+  <!-- left longer slash -->
+  <path fill="#fff" d="M14 48.5 33.5 15.5h9.2L23.2 48.5H14Z"/>
+  <!-- right shorter slash -->
+  <path fill="#fff" d="M31.5 42.5 41.8 24.2h8.6L40.1 42.5H31.5Z"/>
+  <!-- accent dot -->
+  <circle cx="47.2" cy="47" r="3.6" fill="#fff"/>
+</svg>
