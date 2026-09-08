@@ -14,7 +14,7 @@ function LoginForm() {
   const [password, setPassword] = useState("DemoPass123!");
   const [error, setError] = useState("");
   const [pending, setPending] = useState(false);
-
+// Login işlemi için bir API endpoint'i oluşturulacak.
   async function onSubmit(event: React.FormEvent) {
     event.preventDefault();
     setError("");
