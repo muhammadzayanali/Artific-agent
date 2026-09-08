@@ -1,12 +1,15 @@
-# Build only the Next.js panel (not the Django backend / repo root).
+# Monorepo: only build the Next.js app in /frontend (ignore Django /backend).
 [build]
   base = "frontend"
   command = "npm run build"
+  publish = ".next"
 
 [build.environment]
   NODE_VERSION = "22"
   NEXT_TELEMETRY_DISABLED = "1"
 
-# Next.js App Router is handled by Netlify's OpenNext adapter (auto).
-# In Netlify Site settings → Environment variables, set:
-#   DJANGO_API_URL = https://your-django-api.example.com
+# Required for login / API proxy against Django.
+# Set this in Netlify UI → Site configuration → Environment variables
+# (Production + Deploy previews):
+#   Key:   DJANGO_API_URL
+#   Value: https://YOUR-DJANGO-HOST
