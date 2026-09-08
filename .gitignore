@@ -10,6 +10,7 @@ db.sqlite3
 node_modules/
 .next/
 frontend/.next/
+frontend/node_modules/
 backend/.venv/
 backend/media/
 *.log
