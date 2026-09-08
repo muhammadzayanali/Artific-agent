@@ -1,0 +1,2 @@
+# Keep for platforms that read Procfile (Railway also uses railway.toml startCommand).
+web: bash start.sh

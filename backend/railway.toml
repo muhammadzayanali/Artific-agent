@@ -1,0 +1,10 @@
+# Railway service config for the Django API (monorepo rootDirectory = backend).
+[build]
+builder = "NIXPACKS"
+
+[deploy]
+startCommand = "bash start.sh"
+healthcheckPath = "/api/health/"
+healthcheckTimeout = 30
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 5

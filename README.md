@@ -46,17 +46,29 @@ npm run dev
 3. Framework: Next.js.
 4. Env var: `DJANGO_API_URL` = your live Django URL (e.g. `https://your-api.up.railway.app`).
 
-### Backend (Railway / Render / Fly)
+### Backend (Railway)
 
-Deploy the `backend/` folder separately. Set:
+1. Create a project on [Railway](https://railway.com) from GitHub repo `Artific-agent`.
+2. **Root Directory:** `backend`
+3. Add a **Postgres** plugin (recommended) — Railway sets `DATABASE_URL`.
+4. Set variables:
 
-- `DJANGO_SECRET_KEY`
-- `DJANGO_DEBUG=0`
-- `DJANGO_ALLOWED_HOSTS=...`
-- `CORS_ALLOWED_ORIGINS=https://your-frontend.vercel.app`
-- `FRONTEND_ORIGIN=https://your-frontend.vercel.app`
+| Variable | Example |
+|----------|---------|
+| `DJANGO_SECRET_KEY` | long random string |
+| `DJANGO_DEBUG` | `0` |
+| `DJANGO_ALLOWED_HOSTS` | `.railway.app` |
+| `CORS_ALLOWED_ORIGINS` | `https://YOUR-SITE.netlify.app` |
+| `FRONTEND_ORIGIN` | `https://YOUR-SITE.netlify.app` |
+| `DATABASE_SSL` | `1` (with Postgres) |
 
-Then run migrate + `seed_demo` on that host.
+5. Deploy. Start command is `bash start.sh` (migrate + seed demo + gunicorn).
+6. Copy the public Railway URL (e.g. `https://xxx.up.railway.app`).
+7. In **Netlify** env vars set `DJANGO_API_URL` to that URL (no trailing slash), then redeploy frontend.
+
+Health check: `GET /api/health/`
+
+Demo login after seed: `demo@artificagent.com` / `DemoPass123!`
 
 ### Netlify (optional)
 
