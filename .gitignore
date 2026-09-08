@@ -16,3 +16,4 @@ backend/media/
 .turbo
 *.tsbuildinfo
 .cursor/
+.local-root-backup/

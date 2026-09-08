@@ -5,7 +5,8 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   compress: true,
-  outputFileTracingRoot: path.join(__dirname),
+  // Repo root when this app is built via root symlinks on Vercel
+  outputFileTracingRoot: path.join(__dirname, ".."),
   images: {
     formats: ["image/avif", "image/webp"],
   },
