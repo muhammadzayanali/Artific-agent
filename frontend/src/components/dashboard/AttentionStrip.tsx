@@ -5,7 +5,7 @@ import Link from "next/link";
 import type { DashboardAttentionItem } from "@/lib/types";
 
 export function AttentionStrip({ items }: { items: DashboardAttentionItem[] }) {
-  if (!items.length) return null;
+  if (!items?.length) return null;
 
   return (
     <section aria-label="Dikkat gerekenler" className="space-y-2">

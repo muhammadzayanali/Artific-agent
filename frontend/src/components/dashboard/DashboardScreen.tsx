@@ -15,6 +15,26 @@ import type { Dashboard } from "@/lib/types";
 
 const STORAGE_KEY = "aa-dash-period";
 
+/** New dashboard UI requires period-scoped payload from build_dashboard(). */
+function isDashboardPayload(value: unknown): value is Dashboard {
+  if (!value || typeof value !== "object") return false;
+  const data = value as Partial<Dashboard>;
+  return Boolean(
+    data.period &&
+      typeof data.period.label === "string" &&
+      data.metrics?.calls_handled &&
+      data.metrics?.potential_rate &&
+      data.metrics?.transfer_rate &&
+      data.metrics?.minutes &&
+      data.metrics?.leads &&
+      data.queue &&
+      data.knowledge &&
+      data.chart &&
+      Array.isArray(data.chart.series) &&
+      Array.isArray(data.attention),
+  );
+}
+
 async function fetchDashboard(query: {
   period: PeriodKey;
   from: string;
@@ -31,7 +51,12 @@ async function fetchDashboard(query: {
   if (!response.ok) {
     throw new Error("dashboard_failed");
   }
-  return (await response.json()) as Dashboard;
+  const payload: unknown = await response.json();
+  if (!isDashboardPayload(payload)) {
+    // Deployed API still returning legacy flat shape → avoid runtime crash on data.period.label
+    throw new Error("dashboard_shape_mismatch");
+  }
+  return payload;
 }
 
 function todayISO() {
@@ -100,8 +125,13 @@ export function DashboardScreen() {
         to: customTo,
       });
       setData(payload);
-    } catch {
-      setError("Gösterge paneli yüklenemedi. Yenileyin veya tekrar giriş yapın.");
+    } catch (err) {
+      const code = err instanceof Error ? err.message : "";
+      setError(
+        code === "dashboard_shape_mismatch"
+          ? "Gösterge paneli API sürümü uyumsuz. Backend’i yeni dashboard endpoint’iyle yeniden deploy edin."
+          : "Gösterge paneli yüklenemedi. Yenileyin veya tekrar giriş yapın.",
+      );
       setData(null);
     } finally {
       setLoading(false);
@@ -131,7 +161,7 @@ export function DashboardScreen() {
     );
   }
 
-  if (!data) return <DashboardSkeleton />;
+  if (!data?.period?.label || !data.metrics) return <DashboardSkeleton />;
 
   const periodLabel = data.period.label;
 
