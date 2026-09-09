@@ -9,7 +9,7 @@ import { getAccessToken } from "@/lib/auth";
 export default async function HomePage() {
   const token = await getAccessToken();
   const primaryHref = token ? "/panel" : "/login";
-  const primaryLabel = token ? "Panele dön" : "Panele gir";
+  const primaryLabel = token ? "Panele dön" : "Giriş Yap";
 
   return (
     <main className="relative min-h-svh overflow-hidden">

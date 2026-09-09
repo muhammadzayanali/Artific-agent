@@ -75,7 +75,7 @@ function LoginForm() {
         disabled={pending}
         className="mt-1 h-12 rounded-brand bg-[var(--text)] font-semibold text-[var(--bg)] transition hover:opacity-90 disabled:opacity-60"
       >
-        {pending ? "Giriş yapılıyor…" : "Panele gir"}
+        {pending ? "Giriş yapılıyor…" : "Giriş Yap"}
       </button>
     </form>
   );
