@@ -35,7 +35,7 @@ export default async function HomePage() {
             <BrandLogo href={null} showWordmark={false} size={72} priority />
           </div>
           <BrandName className="font-display text-[clamp(3.2rem,10vw,7.5rem)] font-bold leading-[0.9] tracking-[-0.04em] text-[var(--text)]">
-            Artific <span className="text-[var(--signal)]">agent</span>
+            Artific<span className="text-[var(--signal)]">Agent</span>
           </BrandName>
           <h1 className="mt-7 max-w-2xl font-display text-[clamp(1.65rem,3.4vw,2.75rem)] font-semibold leading-[1.15] tracking-tight text-[var(--text)]">
             Telefonu cevaplayan zeka.

@@ -35,7 +35,7 @@ export function BrandLogo({
       {mark}
       {showWordmark ? (
         <BrandName className="font-display text-[0.95rem] font-semibold tracking-tight text-[var(--text)]">
-          Artific <span className="text-[var(--signal)]">agent</span>
+          Artific<span className="text-[var(--signal)]">Agent</span>
         </BrandName>
       ) : null}
     </span>
