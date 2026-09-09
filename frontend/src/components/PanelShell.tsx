@@ -295,7 +295,7 @@ function SidebarNav({
   return (
     <nav className="min-h-0 flex-1 space-y-1 overflow-y-auto overscroll-contain py-2">
       <Link href="/panel" onClick={onNavigate} className={linkClass(pathname === "/panel")}>
-        Ana sayfa
+        Gösterge Paneli
       </Link>
 
       {groups.map((group) => {
@@ -385,7 +385,7 @@ export function PanelShell({
             </p>
             <p className="font-sans text-[10px] tracking-[0.04em] text-[var(--muted-2)]">
               <span className="notranslate" translate="no">
-                Artific agent
+                Artificagent
               </span>
             </p>
           </div>

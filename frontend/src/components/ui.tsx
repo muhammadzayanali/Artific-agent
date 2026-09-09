@@ -12,7 +12,7 @@ export function PageHeader({
       <div className="min-w-0 animate-fade-up">
         <p className="font-sans text-[11px] font-medium tracking-[0.04em] text-[var(--signal)]">
           <span className="notranslate" translate="no">
-            Artific agent
+            Artificagent
           </span>{" "}
           · ops
         </p>
