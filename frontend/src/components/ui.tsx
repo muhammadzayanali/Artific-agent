@@ -10,11 +10,11 @@ export function PageHeader({
   return (
     <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
       <div className="min-w-0 animate-fade-up">
-        <p className="font-sans text-[11px] font-medium uppercase tracking-[0.18em] text-[var(--signal)]">
+        <p className="font-sans text-[11px] font-medium tracking-[0.04em] text-[var(--signal)]">
           <span className="notranslate" translate="no">
-            ArtificAgent
+            Artific agent
           </span>{" "}
-          · Ops
+          · ops
         </p>
         <h1 className="mt-1 font-display text-2xl font-light tracking-tight text-[var(--text)] sm:text-[1.75rem] sm:leading-tight">
           {title}
@@ -54,7 +54,7 @@ export function StatCard({ label, value }: { label: string; value: string | numb
   return (
     <Card className="relative overflow-hidden p-4">
       <div className="pointer-events-none absolute -right-6 -top-6 h-20 w-20 rounded-full bg-[var(--signal-soft)] blur-2xl" />
-      <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--muted-2)]">{label}</p>
+      <p className="font-mono text-[10px] tracking-[0.04em] text-[var(--muted-2)]">{label}</p>
       <p className="mt-2 font-display text-3xl font-semibold tracking-tight text-[var(--text)]">
         {value}
       </p>

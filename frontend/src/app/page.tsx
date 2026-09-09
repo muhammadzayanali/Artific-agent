@@ -35,8 +35,7 @@ export default async function HomePage() {
             <BrandLogo href={null} showWordmark={false} size={72} priority />
           </div>
           <BrandName className="font-display text-[clamp(3.2rem,10vw,7.5rem)] font-bold leading-[0.9] tracking-[-0.04em] text-[var(--text)]">
-            Artific
-            <span className="text-[var(--signal)]">Agent</span>
+            Artific <span className="text-[var(--signal)]">agent</span>
           </BrandName>
           <h1 className="mt-7 max-w-2xl font-display text-[clamp(1.65rem,3.4vw,2.75rem)] font-semibold leading-[1.15] tracking-tight text-[var(--text)]">
             Telefonu cevaplayan zeka.
@@ -61,17 +60,17 @@ export default async function HomePage() {
           </div>
         </div>
 
-        <p className="absolute bottom-6 right-5 hidden font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--muted-2)] sm:right-8 lg:right-12 lg:block">
-          Less artificial · More intelligence
+        <p className="absolute bottom-6 right-5 hidden font-mono text-[10px] tracking-[0.04em] text-[var(--muted-2)] sm:right-8 lg:right-12 lg:block">
+          Less artificial · more intelligence
         </p>
       </section>
 
       <section className="relative z-10 border-t border-[var(--line)] bg-[color-mix(in_srgb,var(--bg)_88%,transparent)] px-5 py-20 backdrop-blur-xl sm:px-8 lg:px-12">
         <div className="mx-auto max-w-6xl">
-          <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--signal)]">
+          <p className="font-mono text-[11px] tracking-[0.04em] text-[var(--signal)]">
             Neden{" "}
             <span className="notranslate" translate="no">
-              ArtificAgent
+              Artific agent
             </span>
           </p>
           <h2 className="mt-3 max-w-2xl font-display text-3xl font-semibold tracking-tight text-[var(--text)] sm:text-4xl">

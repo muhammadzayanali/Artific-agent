@@ -54,7 +54,7 @@ export default async function CallDetailPage({
           ) : null}
           {call.recording_url ? (
             <div className="mt-4 rounded-xl border border-[var(--line)] bg-[var(--panel-2)] p-4">
-              <p className="text-xs uppercase tracking-wide text-[var(--muted-2)]">Kayıt</p>
+              <p className="text-xs tracking-wide text-[var(--muted-2)]">Kayıt</p>
               <audio className="mt-3 w-full" controls src={call.recording_url} preload="metadata" />
             </div>
           ) : null}
@@ -65,7 +65,7 @@ export default async function CallDetailPage({
             <ol className="mt-4 space-y-4">
               {call.turns.map((turn) => (
                 <li key={turn.id}>
-                  <p className="text-xs uppercase tracking-wide text-[var(--muted-2)]">
+                  <p className="text-xs tracking-wide text-[var(--muted-2)]">
                     {turn.speaker === "agent" ? call.agent_name : "Arayan"} ·{" "}
                     {formatDuration(turn.started_offset_seconds)}
                   </p>

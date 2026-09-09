@@ -9,7 +9,7 @@ export default async function CampaignsPage() {
   if (!campaign) {
     return (
       <div>
-        <PageHeader title="Kampanya Araması" description="Outbound arama kampanyalarınızı yönetin." />
+        <PageHeader title="Kampanya araması" description="Outbound arama kampanyalarınızı yönetin." />
         <Card className="p-10 text-center text-sm text-[var(--muted)]">Henüz kampanya yok.</Card>
       </div>
     );
@@ -18,24 +18,24 @@ export default async function CampaignsPage() {
   return (
     <div className="space-y-6">
       <PageHeader
-        title="Kampanya Araması"
+        title="Kampanya araması"
         description="AI outbound aramalarını başlatın ve hedef listesini takip edin."
       />
       <div className="grid gap-4 xl:grid-cols-[0.9fr_1.1fr]">
         <div className="space-y-4">
           <Card className="p-5">
-            <p className="text-sm font-medium text-[var(--text)]">Kampanya Ayarları</p>
+            <p className="text-sm font-medium text-[var(--text)]">Kampanya ayarları</p>
             <div className="mt-4 space-y-3 text-sm">
               <div>
-                <p className="text-xs text-[var(--muted)]">Arayacak Ajan</p>
-                <p className="mt-1">{campaign.agent_name || "Ana Asistan"}</p>
+                <p className="text-xs text-[var(--muted)]">Arayacak ajan</p>
+                <p className="mt-1">{campaign.agent_name || "Ana asistan"}</p>
               </div>
               <div>
-                <p className="text-xs text-[var(--muted)]">Aramanın Yapılacağı Hat</p>
+                <p className="text-xs text-[var(--muted)]">Aramanın yapılacağı hat</p>
                 <p className="mt-1">{campaign.line_label}</p>
               </div>
               <div>
-                <p className="text-xs text-[var(--muted)]">Sesli Kampanya Mesajı</p>
+                <p className="text-xs text-[var(--muted)]">Sesli kampanya mesajı</p>
                 <p className="mt-2 rounded-xl border border-[var(--line)] bg-[var(--panel-2)] p-3 text-[var(--muted)]">
                   {campaign.message}
                 </p>
@@ -43,12 +43,12 @@ export default async function CampaignsPage() {
             </div>
           </Card>
           <Card className="p-5">
-            <p className="text-sm font-medium text-[var(--text)]">Kampanya Kontrolü</p>
+            <p className="text-sm font-medium text-[var(--text)]">Kampanya kontrolü</p>
             <div className="mt-4">
               <StartCampaignButton id={campaign.id} status={campaign.status} />
             </div>
             <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
-              <StatCard label="Toplam Hedef" value={campaign.total_targets} />
+              <StatCard label="Toplam hedef" value={campaign.total_targets} />
               <StatCard label="Aranan" value={campaign.called_count} />
               <StatCard label="Başarılı" value={campaign.success_count} />
               <StatCard label="Hatalı" value={campaign.failed_count} />
@@ -64,7 +64,7 @@ export default async function CampaignsPage() {
 
         <Card className="overflow-hidden">
           <div className="border-b border-[var(--line)] px-5 py-4">
-            <p className="text-sm font-medium text-[var(--text)]">Kampanya Arama Listesi</p>
+            <p className="text-sm font-medium text-[var(--text)]">Kampanya arama listesi</p>
           </div>
           <div className="divide-y divide-[var(--line)]">
             {campaign.contacts.map((contact) => {

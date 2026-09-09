@@ -96,19 +96,25 @@ body {
     radial-gradient(700px 400px at 70% 100%, var(--bg-accent-c), transparent 45%),
     var(--bg);
   color: var(--text);
-  font-family: Inter, var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-inter), Inter, "Inter Fallback", system-ui, sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 29px;
   @apply antialiased;
 }
 
-/* Brand display — Waldenburg 300 (fallback until licensed .woff2 is added) */
+/* Site-wide: Inter for headings and body (same family) */
+.font-display,
+.type-display,
+.font-sans,
+.type-body {
+  font-family: var(--font-inter), Inter, "Inter Fallback", system-ui, sans-serif;
+  font-style: normal;
+}
+
 .font-display,
 .type-display {
-  font-family: Waldenburg, "Waldenburg Fallback", var(--font-waldenburg-fallback), system-ui, sans-serif;
-  font-weight: 300;
-  font-style: normal;
+  font-weight: 400;
 }
 
 .type-display {
@@ -117,7 +123,6 @@ body {
 }
 
 .type-body {
-  font-family: Inter, var(--font-inter), system-ui, sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 29px;

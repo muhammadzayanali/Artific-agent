@@ -16,12 +16,12 @@ export function AnalysisWorkspace({ reports }: { reports: AnalysisReport[] }) {
   return (
     <div className="grid gap-4 lg:grid-cols-2">
       <Card className="p-5">
-        <p className="text-xs uppercase tracking-[0.14em] text-[var(--muted-2)]">Analiz Raporları</p>
+        <p className="text-xs tracking-[0.14em] text-[var(--muted-2)]">Analiz raporları</p>
         {reports.length === 0 ? (
           <div className="mt-8">
             <EmptyState
               title="Henüz rapor yok"
-              body="Hemen Analiz Et butonuyla ilk raporunuzu oluşturabilirsiniz."
+              body="Hemen analiz et butonuyla ilk raporunuzu oluşturabilirsiniz."
             />
           </div>
         ) : (
@@ -49,13 +49,13 @@ export function AnalysisWorkspace({ reports }: { reports: AnalysisReport[] }) {
         )}
       </Card>
       <Card className="p-5">
-        <p className="text-xs uppercase tracking-[0.14em] text-[var(--muted-2)]">Rapor Önizleme</p>
+        <p className="text-xs tracking-[0.14em] text-[var(--muted-2)]">Rapor önizleme</p>
         {selected ? (
           <div className="mt-4 space-y-4">
             <h2 className="text-xl font-semibold text-[var(--text)]">{selected.title}</h2>
             <p className="text-sm text-[var(--muted)]">{selected.summary}</p>
             <div className="rounded-xl border border-[var(--line)] bg-[var(--panel-2)] p-4">
-              <p className="text-xs uppercase tracking-wide text-[var(--muted-2)]">Öneriler</p>
+              <p className="text-xs tracking-wide text-[var(--muted-2)]">Öneriler</p>
               <pre className="mt-3 whitespace-pre-wrap font-sans text-sm text-[var(--text)]">
                 {selected.recommendations}
               </pre>

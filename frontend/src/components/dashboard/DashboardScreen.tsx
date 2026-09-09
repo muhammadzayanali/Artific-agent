@@ -21,17 +21,17 @@ function isDashboardPayload(value: unknown): value is Dashboard {
   const data = value as Partial<Dashboard>;
   return Boolean(
     data.period &&
-      typeof data.period.label === "string" &&
-      data.metrics?.calls_handled &&
-      data.metrics?.potential_rate &&
-      data.metrics?.transfer_rate &&
-      data.metrics?.minutes &&
-      data.metrics?.leads &&
-      data.queue &&
-      data.knowledge &&
-      data.chart &&
-      Array.isArray(data.chart.series) &&
-      Array.isArray(data.attention),
+    typeof data.period.label === "string" &&
+    data.metrics?.calls_handled &&
+    data.metrics?.potential_rate &&
+    data.metrics?.transfer_rate &&
+    data.metrics?.minutes &&
+    data.metrics?.leads &&
+    data.queue &&
+    data.knowledge &&
+    data.chart &&
+    Array.isArray(data.chart.series) &&
+    Array.isArray(data.attention),
   );
 }
 
@@ -164,15 +164,30 @@ export function DashboardScreen() {
   if (!data?.period?.label || !data.metrics) return <DashboardSkeleton />;
 
   const periodLabel = data.period.label;
+  const getGreeting = () => {
+    const hour = new Date().getHours();
+  
+    if (hour >= 5 && hour < 12) {
+      return "Good morning";
+    }
+  
+    if (hour >= 12 && hour < 18) {
+      return "Good afternoon";
+    }
+  
+    return "Good night";
+  };
+  
+  const greeting = getGreeting();
 
   return (
     <div className="space-y-4">
       <header className="animate-fade-up">
-        <p className="font-sans text-[11px] font-medium uppercase tracking-[0.18em] text-[var(--signal)]">
-          <BrandName>ArtificAgent</BrandName> · Ops
+        <p className="font-sans text-[11px] font-medium tracking-[0.04em] text-[var(--signal)]">
+          <BrandName>Artific agent</BrandName> · ops
         </p>
         <h1 className="mt-1 font-display text-2xl font-light tracking-tight text-[var(--text)] sm:text-[1.75rem] sm:leading-tight">
-          Operasyon sağlığı
+          {greeting}, Mecidiye Jeweler 👋🏻
         </h1>
         <p className="mt-1 max-w-xl font-sans text-sm leading-snug text-[var(--muted)]">
           Bir bakışta bugün neyin dikkat istediğini ve dönemin nasıl gittiğini görün.

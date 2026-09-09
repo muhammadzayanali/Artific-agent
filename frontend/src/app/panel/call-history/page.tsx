@@ -24,14 +24,14 @@ export default async function CallHistoryPage({
   return (
     <div className="space-y-6">
       <PageHeader
-        title="Çağrı Geçmişi"
+        title="Çağrı geçmişi"
         description="Geçmiş görüşmeleri, özetleri ve transkriptleri inceleyin."
       />
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
         <StatCard label="Toplam" value={stats.total} />
         <StatCard label="Potansiyel" value={stats.potential} />
-        <StatCard label="Transfer İstekleri" value={stats.transfers} />
-        <StatCard label="Toplam Süre" value={stats.total_duration} />
+        <StatCard label="Transfer istekleri" value={stats.transfers} />
+        <StatCard label="Toplam süre" value={stats.total_duration} />
       </div>
 
       <div className="flex flex-wrap items-center gap-2">
@@ -68,7 +68,7 @@ export default async function CallHistoryPage({
       </div>
 
       <Card className="overflow-hidden">
-        <div className="hidden grid-cols-[140px_140px_80px_1fr_120px_100px] gap-3 border-b border-[var(--line)] px-4 py-3 text-xs uppercase tracking-wide text-[var(--muted-2)] md:grid">
+        <div className="hidden grid-cols-[140px_140px_80px_1fr_120px_100px] gap-3 border-b border-[var(--line)] px-4 py-3 text-xs tracking-wide text-[var(--muted-2)] md:grid">
           <span>Tarih</span>
           <span>Arayan</span>
           <span>Süre</span>

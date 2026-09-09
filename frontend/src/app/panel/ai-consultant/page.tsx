@@ -9,7 +9,7 @@ export default async function AiConsultantPage() {
   return (
     <div className="space-y-6">
       <PageHeader
-        title="AI İşletme Danışmanı"
+        title="AI işletme danışmanı"
         description="Yapay zeka, müşteri çağrılarınızı analiz ederek size stratejik öneriler ve kampanya fikirleri sunar."
         action={<AnalyzeButton />}
       />

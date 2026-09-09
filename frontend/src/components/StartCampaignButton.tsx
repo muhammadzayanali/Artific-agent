@@ -18,7 +18,7 @@ export function StartCampaignButton({ id, status }: { id: number; status: string
 
   return (
     <Button onClick={start} disabled={pending || status === "running"} className="w-full">
-      {status === "running" ? "Kampanya Çalışıyor" : pending ? "Başlatılıyor…" : "Kampanyayı Başlat"}
+      {status === "running" ? "Kampanya çalışıyor" : pending ? "Başlatılıyor…" : "Kampanyayı başlat"}
     </Button>
   );
 }

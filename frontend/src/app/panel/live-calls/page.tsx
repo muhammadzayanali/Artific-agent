@@ -10,12 +10,12 @@ export default async function LiveCallsPage() {
   return (
     <div>
       <PageHeader
-        title="Canlı Çağrılar"
+        title="Canlı çağrılar"
         description="Yapay zeka ile görüşen müşterilerinizi takip edin."
         action={
           <Badge tone="live">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
-            CANLI
+            Canlı
           </Badge>
         }
       />

@@ -95,8 +95,7 @@ export default function LoginPage() {
         <section className="animate-fade-up max-lg:order-2">
           <BrandLogo href={null} showWordmark={false} size={64} className="mb-6" />
           <BrandName className="font-display text-[clamp(2.6rem,7vw,4.8rem)] font-bold leading-[0.92] tracking-[-0.04em] text-[var(--text)]">
-            Artific
-            <span className="text-[var(--signal)]">Agent</span>
+            Artific <span className="text-[var(--signal)]">agent</span>
           </BrandName>
           <h1 className="mt-6 max-w-lg font-display text-2xl font-semibold leading-snug tracking-tight text-[var(--text)] sm:text-3xl">
             Operasyon paneline hoş geldiniz.

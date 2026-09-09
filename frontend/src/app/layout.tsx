@@ -1,24 +1,15 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono, Outfit } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
 
 import { ThemeProvider } from "@/components/ThemeProvider";
 
 import "./globals.css";
 
-/* Waldenburg is commercial — Outfit 300 is the web fallback until licensed files are added */
-const display = Outfit({
-  subsets: ["latin"],
-  variable: "--font-waldenburg-fallback",
-  weight: ["300", "400", "500", "600"],
-  display: "swap",
-  preload: true,
-});
-
-const sans = Inter({
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
   preload: true,
 });
@@ -32,7 +23,7 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ArtificAgent — Telefonu cevaplayan zeka",
+  title: "Artific agent — Telefonu cevaplayan zeka",
   description:
     "Sesli AI asistan, canlı çağrı, bilgi bankası ve kampanya operasyonunu tek panelden yönetin.",
   icons: {
@@ -50,10 +41,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="tr"
-      className={`${display.variable} ${sans.variable} ${mono.variable} h-full`}
+      className={`${inter.variable} ${mono.variable} h-full`}
       suppressHydrationWarning
     >
-      <body className="min-h-full font-sans text-[18px] font-normal leading-[29px]" suppressHydrationWarning>
+      <body
+        className={`${inter.className} min-h-full text-[18px] font-normal leading-[29px]`}
+        suppressHydrationWarning
+      >
         <Script id="aa-theme-boot" strategy="beforeInteractive">
           {themeBootScript}
         </Script>

@@ -9,7 +9,7 @@ export default function NotFound() {
         <div className="mb-6 flex justify-center">
           <BrandLogo href={null} showWordmark={false} size={56} />
         </div>
-        <p className="font-mono text-sm uppercase tracking-[0.2em] text-[var(--signal)]">404</p>
+        <p className="font-mono text-sm tracking-[0.2em] text-[var(--signal)]">404</p>
         <h1 className="mt-3 font-display text-4xl font-semibold">Sayfa bulunamadı</h1>
         <p className="mt-4 text-[var(--muted)]">İstediğiniz sayfa mevcut değil.</p>
         <Link

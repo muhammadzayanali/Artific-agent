@@ -10,7 +10,7 @@ const categoryLabel: Record<string, string> = {
   price: "Fiyat sorusu",
   reservation: "Rezervasyon",
   complaint: "Şikayet",
-  callback: "Geri Arama",
+  callback: "Geri arama",
   quote: "Teklif",
   info: "Bilgi talebi",
   other: "Diğer",
@@ -21,7 +21,7 @@ const filters = [
   { label: "Fiyat sorusu", category: "price" },
   { label: "Rezervasyon", category: "reservation" },
   { label: "Şikayet", category: "complaint" },
-  { label: "Geri Arama", category: "callback" },
+  { label: "Geri arama", category: "callback" },
   { label: "Teklif", category: "quote" },
   { label: "Bilgi talebi", category: "info" },
   { label: "Diğer", category: "other" },
@@ -44,11 +44,11 @@ export default async function RequestsPage({
   return (
     <div className="space-y-6">
       <PageHeader
-        title="Talep Merkezi"
+        title="Talep merkezi"
         description="Çağrılardan gelen talepler ve görevler."
         action={
           <CreateResourceButton
-            label="+ Yeni Talep"
+            label="+ Yeni talep"
             endpoint="requests"
             defaults={{ status: "new", priority: "medium", category: "info" }}
             fields={[

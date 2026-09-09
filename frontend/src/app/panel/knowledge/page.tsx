@@ -12,19 +12,19 @@ export default async function KnowledgePage() {
   return (
     <div className="space-y-6">
       <PageHeader
-        title="Bilgi Bankası"
+        title="Bilgi bankası"
         description="Sesli asistanınızın konuşma sırasında yararlanacağı bilgi havuzunu yönetin."
         action={
           <div className="flex flex-wrap gap-2">
             {agentId ? (
               <ActionButton
-                label="Ajanı Senkronize Et"
+                label="Ajanı senkronize et"
                 endpoint={`agents/${agentId}/sync`}
                 successMessage="Bilgi bankası ajanla senkronize edildi."
               />
             ) : null}
             <CreateResourceButton
-              label="+ Yeni Bilgi Ekle"
+              label="+ Yeni bilgi ekle"
               endpoint="knowledge"
               defaults={{ status: "live", priority: 1, category: "Genel" }}
               fields={[
@@ -54,9 +54,9 @@ export default async function KnowledgePage() {
       />
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
         <StatCard label="Yayında" value={live} />
-        <StatCard label="Onay Bekliyor" value={pending} />
+        <StatCard label="Onay bekliyor" value={pending} />
         <StatCard label="Taslak" value={draft} />
-        <StatCard label="Toplam Giriş" value={entries.length} />
+        <StatCard label="Toplam giriş" value={entries.length} />
       </div>
 
       {entries.length === 0 ? (

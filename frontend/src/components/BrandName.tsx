@@ -1,7 +1,7 @@
 /** Keeps the product name from being rewritten by Chrome / Google Translate. */
 export function BrandName({
   className = "",
-  children = "ArtificAgent",
+  children = "Artific agent",
 }: {
   className?: string;
   children?: React.ReactNode;

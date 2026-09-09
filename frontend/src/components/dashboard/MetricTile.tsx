@@ -36,7 +36,7 @@ export function MetricTile({
   return (
     <article className="rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-4 shadow-[var(--shadow)]">
       <div className="flex items-start justify-between gap-2">
-        <p className="font-sans text-[11px] font-medium uppercase tracking-[0.14em] text-[var(--muted-2)]">
+        <p className="font-sans text-[11px] font-medium tracking-[0.04em] text-[var(--muted-2)]">
           {label}
         </p>
         <span className="rounded-full border border-[var(--line)] px-2 py-0.5 font-sans text-[10px] text-[var(--muted-2)]">

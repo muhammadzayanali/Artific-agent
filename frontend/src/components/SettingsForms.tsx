@@ -85,10 +85,10 @@ export function SettingsForms({ profile }: { profile: Profile }) {
   return (
     <div className="space-y-4">
       <div className="rounded-brand-xl border border-[var(--line)] bg-[var(--panel)] p-5 shadow-[var(--shadow)]">
-        <p className="text-sm font-medium text-[var(--text)]">İşletme Bilgileri</p>
+        <p className="text-sm font-medium text-[var(--text)]">İşletme bilgileri</p>
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
           <label className="grid gap-1.5 text-sm">
-            <span className="text-[var(--muted)]">İşletme Adı</span>
+            <span className="text-[var(--muted)]">İşletme adı</span>
             <input
               disabled
               className="theme-input h-11 rounded-xl px-3 opacity-70"
@@ -96,7 +96,7 @@ export function SettingsForms({ profile }: { profile: Profile }) {
             />
           </label>
           <label className="grid gap-1.5 text-sm">
-            <span className="text-[var(--muted)]">Yetkili Adı</span>
+            <span className="text-[var(--muted)]">Yetkili adı</span>
             <input
               className="theme-input h-11 rounded-xl px-3"
               value={authorizedName}
@@ -104,7 +104,7 @@ export function SettingsForms({ profile }: { profile: Profile }) {
             />
           </label>
           <label className="grid gap-1.5 text-sm">
-            <span className="text-[var(--muted)]">Cep Telefonu</span>
+            <span className="text-[var(--muted)]">Cep telefonu</span>
             <input
               className="theme-input h-11 rounded-xl px-3"
               value={mobilePhone}
@@ -112,7 +112,7 @@ export function SettingsForms({ profile }: { profile: Profile }) {
             />
           </label>
           <label className="grid gap-1.5 text-sm">
-            <span className="text-[var(--muted)]">Sabit Hat (AI Hattı)</span>
+            <span className="text-[var(--muted)]">Sabit hat (AI hattı)</span>
             <input
               className="theme-input h-11 rounded-xl px-3"
               value={aiLine}
@@ -129,12 +129,12 @@ export function SettingsForms({ profile }: { profile: Profile }) {
           />
         </label>
         <Button className="mt-4" onClick={saveProfile} disabled={pending}>
-          Bilgileri Kaydet
+          Bilgileri kaydet
         </Button>
       </div>
 
       <div className="rounded-brand-xl border border-[var(--line)] bg-[var(--panel)] p-5 shadow-[var(--shadow)]">
-        <p className="text-sm font-medium text-[var(--text)]">Şifre Değiştir</p>
+        <p className="text-sm font-medium text-[var(--text)]">Şifre değiştir</p>
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
           <input
             type="password"
@@ -152,18 +152,18 @@ export function SettingsForms({ profile }: { profile: Profile }) {
           />
         </div>
         <Button className="mt-4" variant="secondary" onClick={changePassword} disabled={pending}>
-          Şifreyi Güncelle
+          Şifreyi güncelle
         </Button>
       </div>
 
       <div className="rounded-brand-xl border border-[var(--line)] bg-[var(--panel)] p-6 text-center shadow-[var(--shadow)]">
-        <p className="text-xs uppercase tracking-[0.14em] text-[var(--muted-2)]">Dakika Bakiyesi</p>
+        <p className="text-xs tracking-[0.14em] text-[var(--muted-2)]">Dakika bakiyesi</p>
         <p className="mt-3 text-5xl font-semibold text-[var(--signal)]">
           {Number(profile.remaining_minutes).toFixed(1)}
         </p>
         <p className="mt-2 text-sm text-[var(--muted)]">dakika kaldı</p>
         <Button className="mt-5 w-full" onClick={requestMinutes} disabled={pending}>
-          Dakika Paketi Talep Et (+100)
+          Dakika paketi talep et (+100)
         </Button>
       </div>
 

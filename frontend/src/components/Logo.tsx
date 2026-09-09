@@ -11,7 +11,7 @@ type BrandLogoProps = {
   priority?: boolean;
 };
 
-/** Official ArtificAgent mark (black squircle + white glyph). */
+/** Official Artific agent mark (black squircle + white glyph). */
 export function BrandLogo({
   href = "/",
   showWordmark = true,
@@ -22,7 +22,7 @@ export function BrandLogo({
   const mark = (
     <Image
       src="/logo.png"
-      alt="ArtificAgent"
+      alt="Artific agent"
       width={size}
       height={size}
       priority={priority}
@@ -35,7 +35,7 @@ export function BrandLogo({
       {mark}
       {showWordmark ? (
         <BrandName className="font-display text-[0.95rem] font-semibold tracking-tight text-[var(--text)]">
-          Artific<span className="text-[var(--signal)]">Agent</span>
+          Artific <span className="text-[var(--signal)]">agent</span>
         </BrandName>
       ) : null}
     </span>

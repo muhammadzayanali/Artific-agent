@@ -9,7 +9,7 @@ export default async function AgentsPage() {
   return (
     <div className="space-y-6">
       <PageHeader
-        title="Ajan Ayarı"
+        title="Ajan ayarı"
         description="Ses kaydı, karşılama cümlesi, talimatlar ve araçları buradan yönetin."
       />
       {!agent ? (

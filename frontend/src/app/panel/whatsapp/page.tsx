@@ -13,7 +13,7 @@ export default async function WhatsappPage({
   return (
     <div className="space-y-6">
       <PageHeader
-        title="WhatsApp Yazışmaları"
+        title="WhatsApp yazışmaları"
         description="Yapay zekanın müşterilerle WhatsApp üzerinden yaptığı görüşme kayıtları."
       />
       <form className="flex gap-2" action="/panel/whatsapp">
@@ -34,10 +34,10 @@ export default async function WhatsappPage({
         />
       ) : (
         <Card className="overflow-hidden">
-          <div className="grid grid-cols-[140px_180px_1fr] gap-3 border-b border-[var(--line)] px-4 py-3 text-xs uppercase tracking-wide text-[var(--muted-2)]">
+          <div className="grid grid-cols-[140px_180px_1fr] gap-3 border-b border-[var(--line)] px-4 py-3 text-xs tracking-wide text-[var(--muted-2)]">
             <span>Tarih</span>
-            <span>Müşteri Numarası</span>
-            <span>Görüşme Kaydı</span>
+            <span>Müşteri numarası</span>
+            <span>Görüşme kaydı</span>
           </div>
           {messages.map((msg) => (
             <div

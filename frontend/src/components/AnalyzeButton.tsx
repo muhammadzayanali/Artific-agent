@@ -18,7 +18,7 @@ export function AnalyzeButton() {
 
   return (
     <Button onClick={run} disabled={pending}>
-      {pending ? "Analiz ediliyor…" : "Hemen Analiz Et (Canlı)"}
+      {pending ? "Analiz ediliyor…" : "Hemen analiz et (canlı)"}
     </Button>
   );
 }

@@ -25,13 +25,13 @@ export function KnowledgeStatus({ knowledge }: { knowledge: DashboardKnowledge }
       <div className="flex items-center justify-between gap-2">
         <h2 className="font-display text-sm font-medium text-[var(--text)]">Ajan & bilgi durumu</h2>
         <Link href="/panel/agents" className="font-sans text-xs text-[var(--muted)] hover:text-[var(--text)]">
-          Ajan Ayarı
+          Ajan ayarı
         </Link>
       </div>
       <div className="mt-3 space-y-3">
         <div className="flex items-center justify-between gap-2 rounded-xl border border-[var(--line)] bg-[var(--panel-solid)] px-3 py-2.5">
           <div>
-            <p className="font-sans text-[11px] uppercase tracking-[0.12em] text-[var(--muted-2)]">
+            <p className="font-sans text-[11px] tracking-[0.12em] text-[var(--muted-2)]">
               Son senkron
             </p>
             <p className="mt-0.5 font-sans text-sm text-[var(--text)]">

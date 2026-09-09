@@ -9,15 +9,15 @@ export default async function StaffPage() {
   return (
     <div>
       <PageHeader
-        title="Personel Yönetimi"
+        title="Personel yönetimi"
         description="Yapay zeka asistanının yönlendireceği personel listesi."
         action={
           <CreateResourceButton
-            label="+ Personel Ekle"
+            label="+ Personel ekle"
             endpoint="staff"
             defaults={{ availability: "available" }}
             fields={[
-              { name: "name", label: "Ad Soyad", required: true },
+              { name: "name", label: "Ad soyad", required: true },
               { name: "title", label: "Unvan", required: true },
               { name: "phone", label: "Telefon", required: true },
               { name: "specialty", label: "Uzmanlık" },

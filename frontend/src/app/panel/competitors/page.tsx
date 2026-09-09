@@ -8,17 +8,17 @@ export default async function CompetitorsPage() {
   return (
     <div>
       <PageHeader
-        title="Rakip Analizi"
+        title="Rakip analizi"
         description="Çevredeki rakipleri Google Maps tarzı verilerle takip edin; puan ve yorumlardan strateji çıkarın."
         action={
           <div className="flex flex-wrap gap-2">
             <ActionButton
-              label="Otomatik Rakip Tara"
+              label="Otomatik rakip tara"
               endpoint="competitors/scan"
               successMessage="Tarama tamamlandı."
             />
             <CreateResourceButton
-              label="+ Manuel Rakip Ekle"
+              label="+ Manuel rakip ekle"
               endpoint="competitors"
               defaults={{ review_count: 0, rating: 4.0 }}
               fields={[

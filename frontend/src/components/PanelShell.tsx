@@ -12,28 +12,28 @@ type NavGroup = { title: string; items: NavItem[] };
 
 const groups: NavGroup[] = [
   {
-    title: "YAPILANDIRMA",
+    title: "Yapılandırma",
     items: [
-      { href: "/panel/agents", label: "Ajan Ayarı" },
-      { href: "/panel/knowledge", label: "Bilgi Bankası" },
-      { href: "/panel/staff", label: "Personel Durumu" },
+      { href: "/panel/agents", label: "Ajan ayarı" },
+      { href: "/panel/knowledge", label: "Bilgi bankası" },
+      { href: "/panel/staff", label: "Personel durumu" },
     ],
   },
   {
-    title: "İZLEME",
+    title: "İzleme",
     items: [
-      { href: "/panel/live-calls", label: "Canlı Çağrılar" },
-      { href: "/panel/call-history", label: "Çağrı Geçmişi" },
-      { href: "/panel/ai-consultant", label: "AI Danışman" },
-      { href: "/panel/competitors", label: "Rakip Analizi" },
+      { href: "/panel/live-calls", label: "Canlı çağrılar" },
+      { href: "/panel/call-history", label: "Çağrı geçmişi" },
+      { href: "/panel/ai-consultant", label: "AI danışman" },
+      { href: "/panel/competitors", label: "Rakip analizi" },
     ],
   },
   {
-    title: "YAYINA ALMA",
+    title: "Yayına alma",
     items: [
-      { href: "/panel/campaigns", label: "Kampanya Araması" },
-      { href: "/panel/whatsapp", label: "WhatsApp Bot" },
-      { href: "/panel/requests", label: "Talep Merkezi" },
+      { href: "/panel/campaigns", label: "Kampanya araması" },
+      { href: "/panel/whatsapp", label: "WhatsApp bot" },
+      { href: "/panel/requests", label: "Talep merkezi" },
     ],
   },
 ];
@@ -147,7 +147,7 @@ function ProfileMenu({
             </Link>
 
             <div className="rounded-xl px-3 py-2.5" role="none">
-              <p className="mb-2 font-sans text-[11px] font-medium uppercase tracking-[0.14em] text-[var(--muted-2)]">
+              <p className="mb-2 font-sans text-[11px] font-medium tracking-[0.14em] text-[var(--muted-2)]">
                 Tema
               </p>
               <div
@@ -295,7 +295,7 @@ function SidebarNav({
   return (
     <nav className="min-h-0 flex-1 space-y-1 overflow-y-auto overscroll-contain py-2">
       <Link href="/panel" onClick={onNavigate} className={linkClass(pathname === "/panel")}>
-        Ana Sayfa
+        Ana sayfa
       </Link>
 
       {groups.map((group) => {
@@ -310,7 +310,7 @@ function SidebarNav({
               onClick={() => toggleGroup(group.title)}
               className="flex w-full items-center justify-between gap-2 px-3 py-1.5 text-left transition hover:bg-[var(--nav-hover)]"
             >
-              <span className="font-sans text-[10px] font-medium tracking-[0.18em] text-[var(--muted-2)]">
+              <span className="font-sans text-[10px] font-medium tracking-[0.04em] text-[var(--muted-2)]">
                 {group.title}
               </span>
               <svg
@@ -383,9 +383,9 @@ export function PanelShell({
             <p className="truncate font-display text-sm font-light tracking-tight text-[var(--text)]">
               {orgName}
             </p>
-            <p className="font-sans text-[10px] uppercase tracking-[0.16em] text-[var(--muted-2)]">
+            <p className="font-sans text-[10px] tracking-[0.04em] text-[var(--muted-2)]">
               <span className="notranslate" translate="no">
-                ArtificAgent
+                Artific agent
               </span>
             </p>
           </div>
@@ -397,7 +397,7 @@ export function PanelShell({
       <div className="shrink-0 space-y-2 border-t border-[var(--line)] px-2.5 py-2.5">
         <div className="rounded-xl border border-[color-mix(in_srgb,var(--signal)_22%,var(--line))] bg-[linear-gradient(145deg,var(--signal-soft),var(--panel-solid)_70%)] px-2.5 py-2">
           <div className="flex items-baseline justify-between gap-2">
-            <p className="font-sans text-[11px] font-medium uppercase tracking-[0.14em] text-[var(--signal)]">
+            <p className="font-sans text-[11px] font-medium tracking-[0.04em] text-[var(--signal)]">
               Kalan dakika
             </p>
             <p className="font-display text-xl font-light leading-none tracking-tight text-[var(--signal)]">
@@ -456,7 +456,7 @@ export function PanelShell({
             </button>
             <div className="min-w-0 text-right">
               <p className="truncate font-sans text-sm font-medium text-[var(--text)]">{orgName}</p>
-              <p className="font-sans text-[10px] uppercase tracking-[0.14em] text-[var(--muted-2)]">
+              <p className="font-sans text-[10px] tracking-[0.14em] text-[var(--muted-2)]">
                 Operasyon
               </p>
             </div>

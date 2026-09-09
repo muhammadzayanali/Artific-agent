@@ -7,11 +7,11 @@ import { Badge, Button, Card } from "@/components/ui";
 import type { Agent } from "@/lib/types";
 
 const TOOL_OPTIONS = [
-  { id: "knowledge", label: "Bilgi Bankası" },
-  { id: "transfer", label: "Personel Aktarımı" },
+  { id: "knowledge", label: "Bilgi bankası" },
+  { id: "transfer", label: "Personel aktarımı" },
   { id: "appointment", label: "Randevu" },
-  { id: "price_lookup", label: "Fiyat Sorgusu" },
-  { id: "whatsapp", label: "WhatsApp Özeti" },
+  { id: "price_lookup", label: "Fiyat sorgusu" },
+  { id: "whatsapp", label: "WhatsApp özeti" },
 ];
 
 export function AgentStudio({ agent }: { agent: Agent }) {
@@ -170,7 +170,7 @@ export function AgentStudio({ agent }: { agent: Agent }) {
         <Card className="p-6">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--signal)]">
+              <p className="font-mono text-[10px] tracking-[0.18em] text-[var(--signal)]">
                 Ajan stüdyosu
               </p>
               <h2 className="mt-2 font-display text-2xl font-semibold text-[var(--text)]">
@@ -289,10 +289,10 @@ export function AgentStudio({ agent }: { agent: Agent }) {
 
           <div className="mt-6 flex flex-wrap gap-2">
             <Button onClick={saveConfig} disabled={saving}>
-              {saving ? "Kaydediliyor…" : "Ayarları Kaydet"}
+              {saving ? "Kaydediliyor…" : "Ayarları kaydet"}
             </Button>
             <Button variant="secondary" onClick={syncAgent} disabled={saving}>
-              Ajanı Senkronize Et
+              Ajanı senkronize et
             </Button>
           </div>
           {message ? <p className="mt-3 text-sm text-[var(--signal)]">{message}</p> : null}
@@ -302,7 +302,7 @@ export function AgentStudio({ agent }: { agent: Agent }) {
 
       <div className="space-y-4">
         <Card className="p-6">
-          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--gilt)]">
+          <p className="font-mono text-[10px] tracking-[0.18em] text-[var(--gilt)]">
             Ses kaydı
           </p>
           <h3 className="mt-2 font-display text-xl font-semibold text-[var(--text)]">
@@ -315,7 +315,7 @@ export function AgentStudio({ agent }: { agent: Agent }) {
 
           <div className="mt-6 flex flex-wrap items-center gap-3">
             {!recording ? (
-              <Button onClick={startRecording}>Kaydı Başlat</Button>
+              <Button onClick={startRecording}>Kaydı başlat</Button>
             ) : (
               <Button variant="danger" onClick={stopRecording}>
                 Durdur · {seconds}s
@@ -344,7 +344,7 @@ export function AgentStudio({ agent }: { agent: Agent }) {
 
           {sampleUrl ? (
             <div className="mt-6 rounded-xl border border-[var(--line)] bg-[var(--panel-2)] p-4">
-              <p className="text-xs uppercase tracking-wide text-[var(--muted-2)]">Kayıtlı örnek</p>
+              <p className="text-xs tracking-wide text-[var(--muted-2)]">Kayıtlı örnek</p>
               <audio className="mt-3 w-full" controls src={sampleUrl} preload="metadata" />
             </div>
           ) : (

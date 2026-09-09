@@ -69,7 +69,7 @@ export function LoginForm() {
         disabled={pending}
         className="mt-2 h-12 rounded-brand bg-[var(--signal)] font-medium text-white hover:opacity-90 disabled:opacity-60"
       >
-        {pending ? "Signing in…" : "Sign In"}
+        {pending ? "Signing in…" : "Sign in"}
       </button>
     </form>
   );

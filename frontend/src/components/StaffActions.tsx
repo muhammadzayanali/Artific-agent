@@ -37,7 +37,7 @@ export function StaffActions({
     <div className="mt-4 flex gap-2">
       {availability !== "available" ? (
         <Button onClick={markAvailable} disabled={pending} className="flex-1" variant="secondary">
-          Müsait İşaretle
+          Müsait işaretle
         </Button>
       ) : null}
       <Button onClick={remove} disabled={pending} className="flex-1" variant="danger">
