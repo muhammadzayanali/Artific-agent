@@ -1,22 +1,23 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono, Outfit, Syne } from "next/font/google";
+import { Inter, JetBrains_Mono, Outfit } from "next/font/google";
 import Script from "next/script";
 
 import { ThemeProvider } from "@/components/ThemeProvider";
 
 import "./globals.css";
 
-const display = Syne({
+/* Waldenburg is commercial — Outfit 300 is the web fallback until licensed files are added */
+const display = Outfit({
   subsets: ["latin"],
-  variable: "--font-display",
-  weight: ["600", "700"],
+  variable: "--font-waldenburg-fallback",
+  weight: ["300", "400", "500", "600"],
   display: "swap",
   preload: true,
 });
 
-const sans = Outfit({
+const sans = Inter({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-inter",
   weight: ["400", "500", "600"],
   display: "swap",
   preload: true,
@@ -52,7 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${display.variable} ${sans.variable} ${mono.variable} h-full`}
       suppressHydrationWarning
     >
-      <body className="min-h-full font-sans" suppressHydrationWarning>
+      <body className="min-h-full font-sans text-[18px] font-normal leading-[29px]" suppressHydrationWarning>
         <Script id="aa-theme-boot" strategy="beforeInteractive">
           {themeBootScript}
         </Script>

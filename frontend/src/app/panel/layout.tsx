@@ -5,13 +5,13 @@ import { ApiError, api } from "@/lib/api";
 
 export default async function PanelLayout({ children }: { children: React.ReactNode }) {
   try {
-    // Lean shell fetch — full dashboard only loads on /panel page (deduped via cache())
-    const [profile, live] = await Promise.all([api.getProfile(), api.getLiveCalls()]);
+    const profile = await api.getProfile();
     return (
       <PanelShell
         orgName={profile.organization_name || "İşletme"}
+        userName={profile.authorized_name || profile.organization_name || "Hesap"}
+        userEmail={profile.email || ""}
         remainingMinutes={profile.remaining_minutes}
-        activeCalls={live.length}
       >
         {children}
       </PanelShell>
