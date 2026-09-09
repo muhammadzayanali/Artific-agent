@@ -184,7 +184,7 @@ export function DashboardScreen() {
     <div className="space-y-4">
       <header className="animate-fade-up">
         <p className="font-sans text-[11px] font-medium tracking-[0.04em] text-[var(--signal)]">
-          <BrandName>Artificagent</BrandName> · ops
+          <BrandName>ArtificAgent</BrandName> · ops
         </p>
         <h1 className="mt-1 font-display text-2xl font-light tracking-tight text-[var(--text)] sm:text-[1.75rem] sm:leading-tight">
           {greeting}, Mecidiye Jeweler 👋🏻

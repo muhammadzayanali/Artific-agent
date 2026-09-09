@@ -385,7 +385,7 @@ export function PanelShell({
             </p>
             <p className="font-sans text-[10px] tracking-[0.04em] text-[var(--muted-2)]">
               <span className="notranslate" translate="no">
-                Artificagent
+                ArtificAgent
               </span>
             </p>
           </div>
