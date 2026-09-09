@@ -271,15 +271,17 @@ export function PanelShell({
   const displayName = userName || orgName || "Hesap";
 
   const linkClass = (active: boolean) =>
-    `block rounded-xl px-3 py-2.5 font-sans text-sm transition duration-200 ${
-      active ? "nav-active font-medium" : "text-[var(--muted)] hover:bg-[var(--nav-hover)] hover:text-[var(--text)]"
+    `block border-l-[3px] px-3 py-2.5 font-sans text-sm transition duration-200 ${
+      active
+        ? "border-[var(--signal)] bg-[linear-gradient(90deg,var(--signal-soft),transparent)] font-medium text-[var(--text)]"
+        : "border-transparent text-[var(--muted)] hover:bg-[var(--nav-hover)] hover:text-[var(--text)]"
     }`;
 
   const navBody = (
     <>
-      <div className="shrink-0 border-b border-[var(--line)] px-4 py-5">
-        <div className="flex items-center gap-3">
-          <BrandLogo href="/panel" showWordmark={false} size={40} />
+      <div className="shrink-0 border-b border-[var(--line)] px-3 py-4">
+        <div className="flex items-center gap-2.5">
+          <BrandLogo href="/panel" showWordmark={false} size={36} />
           <div className="min-w-0">
             <p className="truncate font-display text-sm font-light tracking-tight text-[var(--text)]">
               {orgName}
@@ -291,16 +293,16 @@ export function PanelShell({
         </div>
       </div>
 
-      <nav className="min-h-0 flex-1 space-y-5 overflow-y-auto overscroll-contain px-3 py-4">
+      <nav className="min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-contain py-3">
         <Link href="/panel" onClick={() => setOpen(false)} className={linkClass(pathname === "/panel")}>
           Ana Sayfa
         </Link>
         {groups.map((group) => (
           <div key={group.title}>
-            <p className="mb-2 px-3 font-sans text-[10px] font-medium tracking-[0.2em] text-[var(--muted-2)]">
+            <p className="mb-1.5 px-3 font-sans text-[10px] font-medium tracking-[0.2em] text-[var(--muted-2)]">
               {group.title}
             </p>
-            <div className="space-y-1">
+            <div className="space-y-0.5">
               {group.items.map((item) => {
                 const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
                 return (
@@ -319,9 +321,8 @@ export function PanelShell({
         ))}
       </nav>
 
-      <div className="shrink-0 space-y-2 border-t border-[var(--line)] p-3">
-        {/* Quiet balance meter — one glance, no status clutter */}
-        <div className="rounded-2xl border border-[color-mix(in_srgb,var(--signal)_22%,var(--line))] bg-[linear-gradient(145deg,var(--signal-soft),var(--panel-solid)_70%)] px-3 py-2.5">
+      <div className="shrink-0 space-y-2 border-t border-[var(--line)] px-2.5 py-2.5">
+        <div className="rounded-xl border border-[color-mix(in_srgb,var(--signal)_22%,var(--line))] bg-[linear-gradient(145deg,var(--signal-soft),var(--panel-solid)_70%)] px-2.5 py-2">
           <div className="flex items-baseline justify-between gap-2">
             <p className="font-sans text-[11px] font-medium uppercase tracking-[0.14em] text-[var(--signal)]">
               Kalan dakika
@@ -352,8 +353,8 @@ export function PanelShell({
 
   return (
     <div className="min-h-svh text-[var(--text)]">
-      <div className="mx-auto flex min-h-svh max-w-[1600px]">
-        <aside className="sticky top-0 hidden h-svh w-[17.5rem] shrink-0 flex-col overflow-hidden border-r border-[var(--line)] bg-[var(--sidebar)] backdrop-blur-2xl lg:flex">
+      <div className="flex min-h-svh w-full">
+        <aside className="sticky top-0 hidden h-svh w-[15.5rem] shrink-0 flex-col overflow-hidden border-r border-[var(--line)] bg-[var(--sidebar)] backdrop-blur-2xl lg:flex">
           {navBody}
         </aside>
 
