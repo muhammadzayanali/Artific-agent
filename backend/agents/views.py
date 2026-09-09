@@ -66,11 +66,13 @@ class AgentSyncView(AgentQueryMixin, APIView):
         if agent is None:
             return Response({"detail": "Ajan bulunamadı."}, status=404)
         agent.status = Agent.Status.ACTIVE
-        agent.save(update_fields=["status", "updated_at"])
+        agent.last_synced_at = timezone.now()
+        agent.last_sync_ok = True
+        agent.save(update_fields=["status", "last_synced_at", "last_sync_ok", "updated_at"])
         return Response(
             {
                 "ok": True,
-                "synced_at": timezone.now().isoformat(),
+                "synced_at": agent.last_synced_at.isoformat(),
                 "agent": AgentSerializer(agent, context={"request": request}).data,
             }
         )

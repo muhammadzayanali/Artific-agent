@@ -25,8 +25,8 @@
   --grid: rgba(15, 23, 42, 0.04);
   --input: #ffffff;
   --nav-hover: rgba(15, 23, 42, 0.04);
-  --sidebar: rgba(255, 255, 255, 0.8);
-  --header: rgba(240, 244, 242, 0.82);
+  --sidebar: #f7faf8;
+  --header: #f0f4f2;
 }
 
 .dark {
@@ -52,8 +52,8 @@
   --grid: rgba(255, 255, 255, 0.015);
   --input: rgba(10, 10, 12, 0.8);
   --nav-hover: rgba(255, 255, 255, 0.04);
-  --sidebar: rgba(10, 10, 12, 0.8);
-  --header: rgba(7, 17, 14, 0.72);
+  --sidebar: #0a0c0b;
+  --header: #07110e;
 }
 
 /* If both classes ever appear, light wins so text stays dark on light bg */
@@ -80,8 +80,8 @@
   --grid: rgba(15, 23, 42, 0.04);
   --input: #ffffff;
   --nav-hover: rgba(15, 23, 42, 0.04);
-  --sidebar: rgba(255, 255, 255, 0.8);
-  --header: rgba(240, 244, 242, 0.82);
+  --sidebar: #f7faf8;
+  --header: #f0f4f2;
 }
 
 html,

@@ -136,3 +136,12 @@ SIMPLE_JWT = {
     "USER_ID_FIELD": "id",
     "USER_ID_CLAIM": "user_id",
 }
+
+# Tunable without code changes — env overrides for ops attention strip
+DASHBOARD_ATTENTION = {
+    "low_minutes": float(os.getenv("DASHBOARD_LOW_MINUTES", "30")),
+    "call_drop_pct": float(os.getenv("DASHBOARD_CALL_DROP_PCT", "40")),
+    "queue_age_hours": float(os.getenv("DASHBOARD_QUEUE_AGE_HOURS", "24")),
+    "sync_stale_hours": float(os.getenv("DASHBOARD_SYNC_STALE_HOURS", "72")),
+}
+

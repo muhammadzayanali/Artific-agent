@@ -3,6 +3,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useState } from "react";
 
+import { BrandName } from "@/components/BrandName";
 import { FrequencyField } from "@/components/FrequencyField";
 import { BrandLogo } from "@/components/Logo";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -93,10 +94,10 @@ export default function LoginPage() {
       <div className="relative z-10 mx-auto grid min-h-[calc(100svh-5rem)] max-w-6xl items-center gap-10 px-5 pb-16 pt-6 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16 lg:px-8">
         <section className="animate-fade-up max-lg:order-2">
           <BrandLogo href={null} showWordmark={false} size={64} className="mb-6" />
-          <p className="font-display text-[clamp(2.6rem,7vw,4.8rem)] font-bold leading-[0.92] tracking-[-0.04em] text-[var(--text)]">
+          <BrandName className="font-display text-[clamp(2.6rem,7vw,4.8rem)] font-bold leading-[0.92] tracking-[-0.04em] text-[var(--text)]">
             Artific
             <span className="text-[var(--signal)]">Agent</span>
-          </p>
+          </BrandName>
           <h1 className="mt-6 max-w-lg font-display text-2xl font-semibold leading-snug tracking-tight text-[var(--text)] sm:text-3xl">
             Operasyon paneline hoş geldiniz.
           </h1>

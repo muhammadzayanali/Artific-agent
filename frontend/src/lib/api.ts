@@ -52,12 +52,24 @@ async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> {
 
 /** Dedupes identical GETs within one server render (layout + page). */
 const getMeCached = cache(() => apiFetch<User>("/api/auth/me/"));
-const getDashboardCached = cache(() => apiFetch<Dashboard>("/api/dashboard/"));
 const getProfileCached = cache(() => apiFetch<Profile>("/api/profile/"));
+
+export type DashboardQuery = {
+  period: "today" | "7d" | "30d" | "custom";
+  from?: string;
+  to?: string;
+};
 
 export const api = {
   getMe: getMeCached,
-  getDashboard: getDashboardCached,
+  getDashboard: (query: DashboardQuery) => {
+    const params = new URLSearchParams({ period: query.period });
+    if (query.period === "custom" && query.from && query.to) {
+      params.set("from", query.from);
+      params.set("to", query.to);
+    }
+    return apiFetch<Dashboard>(`/api/dashboard/?${params.toString()}`);
+  },
   getProfile: getProfileCached,
   getAgents: () => apiFetch<Agent[]>("/api/agents/"),
   getKnowledge: () => apiFetch<KnowledgeEntry[]>("/api/knowledge/"),

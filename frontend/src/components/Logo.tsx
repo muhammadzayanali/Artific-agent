@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { BrandName } from "@/components/BrandName";
+
 type BrandLogoProps = {
   href?: string | null;
   showWordmark?: boolean;
@@ -32,9 +34,9 @@ export function BrandLogo({
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
       {mark}
       {showWordmark ? (
-        <span className="font-display text-[0.95rem] font-semibold tracking-tight text-[var(--text)]">
+        <BrandName className="font-display text-[0.95rem] font-semibold tracking-tight text-[var(--text)]">
           Artific<span className="text-[var(--signal)]">Agent</span>
-        </span>
+        </BrandName>
       ) : null}
     </span>
   );

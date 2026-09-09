@@ -250,6 +250,110 @@ function ProfileMenu({
   );
 }
 
+function groupHasActive(group: NavGroup, pathname: string) {
+  return group.items.some(
+    (item) => pathname === item.href || pathname.startsWith(`${item.href}/`),
+  );
+}
+
+function SidebarNav({
+  pathname,
+  onNavigate,
+}: {
+  pathname: string;
+  onNavigate: () => void;
+}) {
+  const [openGroups, setOpenGroups] = useState<Record<string, boolean>>(() => {
+    const initial: Record<string, boolean> = {};
+    for (const group of groups) {
+      initial[group.title] = true;
+    }
+    return initial;
+  });
+
+  useEffect(() => {
+    setOpenGroups((prev) => {
+      const next = { ...prev };
+      for (const group of groups) {
+        if (groupHasActive(group, pathname)) next[group.title] = true;
+      }
+      return next;
+    });
+  }, [pathname]);
+
+  function toggleGroup(title: string) {
+    setOpenGroups((prev) => ({ ...prev, [title]: !prev[title] }));
+  }
+
+  const linkClass = (active: boolean) =>
+    `block border-l-[3px] px-3 py-1.5 font-sans text-sm leading-snug transition duration-200 ${
+      active
+        ? "border-[var(--signal)] bg-[linear-gradient(90deg,var(--signal-soft),transparent)] font-medium text-[var(--text)]"
+        : "border-transparent text-[var(--muted)] hover:bg-[var(--nav-hover)] hover:text-[var(--text)]"
+    }`;
+
+  return (
+    <nav className="min-h-0 flex-1 space-y-1 overflow-y-auto overscroll-contain py-2">
+      <Link href="/panel" onClick={onNavigate} className={linkClass(pathname === "/panel")}>
+        Ana Sayfa
+      </Link>
+
+      {groups.map((group) => {
+        const isOpen = !!openGroups[group.title];
+        const panelId = `nav-group-${group.title}`;
+        return (
+          <div key={group.title} className="pt-0.5">
+            <button
+              type="button"
+              aria-expanded={isOpen}
+              aria-controls={panelId}
+              onClick={() => toggleGroup(group.title)}
+              className="flex w-full items-center justify-between gap-2 px-3 py-1.5 text-left transition hover:bg-[var(--nav-hover)]"
+            >
+              <span className="font-sans text-[10px] font-medium tracking-[0.18em] text-[var(--muted-2)]">
+                {group.title}
+              </span>
+              <svg
+                viewBox="0 0 24 24"
+                className={`h-3.5 w-3.5 shrink-0 text-[var(--muted-2)] transition duration-200 ${
+                  isOpen ? "rotate-180" : ""
+                }`}
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                aria-hidden
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </button>
+
+            <div
+              id={panelId}
+              role="region"
+              hidden={!isOpen}
+              className={isOpen ? "space-y-0" : "hidden"}
+            >
+              {group.items.map((item) => {
+                const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={onNavigate}
+                    className={linkClass(active)}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })}
+    </nav>
+  );
+}
+
 export function PanelShell({
   children,
   orgName,
@@ -270,16 +374,9 @@ export function PanelShell({
   const minutePct = Math.max(4, Math.min(100, Math.round((minutes / 150) * 100)));
   const displayName = userName || orgName || "Hesap";
 
-  const linkClass = (active: boolean) =>
-    `block border-l-[3px] px-3 py-2.5 font-sans text-sm transition duration-200 ${
-      active
-        ? "border-[var(--signal)] bg-[linear-gradient(90deg,var(--signal-soft),transparent)] font-medium text-[var(--text)]"
-        : "border-transparent text-[var(--muted)] hover:bg-[var(--nav-hover)] hover:text-[var(--text)]"
-    }`;
-
   const navBody = (
     <>
-      <div className="shrink-0 border-b border-[var(--line)] px-3 py-4">
+      <div className="shrink-0 border-b border-[var(--line)] px-3 py-3">
         <div className="flex items-center gap-2.5">
           <BrandLogo href="/panel" showWordmark={false} size={36} />
           <div className="min-w-0">
@@ -287,39 +384,15 @@ export function PanelShell({
               {orgName}
             </p>
             <p className="font-sans text-[10px] uppercase tracking-[0.16em] text-[var(--muted-2)]">
-              ArtificAgent
+              <span className="notranslate" translate="no">
+                ArtificAgent
+              </span>
             </p>
           </div>
         </div>
       </div>
 
-      <nav className="min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-contain py-3">
-        <Link href="/panel" onClick={() => setOpen(false)} className={linkClass(pathname === "/panel")}>
-          Ana Sayfa
-        </Link>
-        {groups.map((group) => (
-          <div key={group.title}>
-            <p className="mb-1.5 px-3 font-sans text-[10px] font-medium tracking-[0.2em] text-[var(--muted-2)]">
-              {group.title}
-            </p>
-            <div className="space-y-0.5">
-              {group.items.map((item) => {
-                const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className={linkClass(active)}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-        ))}
-      </nav>
+      <SidebarNav pathname={pathname} onNavigate={() => setOpen(false)} />
 
       <div className="shrink-0 space-y-2 border-t border-[var(--line)] px-2.5 py-2.5">
         <div className="rounded-xl border border-[color-mix(in_srgb,var(--signal)_22%,var(--line))] bg-[linear-gradient(145deg,var(--signal-soft),var(--panel-solid)_70%)] px-2.5 py-2">
@@ -352,9 +425,9 @@ export function PanelShell({
   );
 
   return (
-    <div className="min-h-svh text-[var(--text)]">
-      <div className="flex min-h-svh w-full">
-        <aside className="sticky top-0 hidden h-svh w-[15.5rem] shrink-0 flex-col overflow-hidden border-r border-[var(--line)] bg-[var(--sidebar)] backdrop-blur-2xl lg:flex">
+    <div className="relative z-[1] min-h-svh bg-[var(--bg)] text-[var(--text)]">
+      <div className="flex min-h-svh w-full bg-[var(--bg)]">
+        <aside className="sticky top-0 hidden h-svh w-[15.5rem] shrink-0 flex-col overflow-hidden border-r border-[var(--line)] bg-[var(--sidebar)] lg:flex">
           {navBody}
         </aside>
 
@@ -366,14 +439,14 @@ export function PanelShell({
               aria-label="Menüyü kapat"
               onClick={() => setOpen(false)}
             />
-            <aside className="relative flex h-full max-h-svh w-80 flex-col overflow-hidden border-r border-[var(--line)] bg-[var(--panel-solid)]">
+            <aside className="relative flex h-full max-h-svh w-80 flex-col overflow-hidden border-r border-[var(--line)] bg-[var(--sidebar)]">
               {navBody}
             </aside>
           </div>
         ) : null}
 
-        <div className="flex min-w-0 flex-1 flex-col">
-          <div className="sticky top-0 z-20 flex items-center justify-between gap-3 border-b border-[var(--line)] bg-[var(--header)] px-3 py-3 backdrop-blur-xl lg:hidden">
+        <div className="flex min-h-svh min-w-0 flex-1 flex-col bg-[var(--bg)]">
+          <div className="sticky top-0 z-20 flex items-center justify-between gap-3 border-b border-[var(--line)] bg-[var(--header)] px-3 py-3 lg:hidden">
             <button
               type="button"
               className="rounded-xl border border-[var(--line)] bg-[var(--panel-solid)] px-3 py-2 font-sans text-sm"
@@ -389,7 +462,7 @@ export function PanelShell({
             </div>
           </div>
 
-          <main className="animate-page min-w-0 flex-1 overflow-x-hidden px-3 py-5 sm:px-6 sm:py-7">
+          <main className="animate-page min-w-0 flex-1 overflow-x-hidden bg-[var(--bg)] px-3 py-4 sm:px-5 sm:py-5">
             {children}
           </main>
         </div>

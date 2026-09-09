@@ -10,6 +10,7 @@ from rest_framework.views import APIView
 from conversations.models import Conversation
 from conversations.serializers import ConversationListSerializer, ConversationDetailSerializer
 
+from .dashboard import build_dashboard
 from .models import (
     AnalysisReport,
     Campaign,
@@ -41,66 +42,8 @@ class DashboardView(APIView):
         organization = org_of(request)
         if organization is None:
             return Response({"detail": "No organization."}, status=400)
-
-        profile = OrganizationProfile.objects.filter(organization=organization).first()
-        today = timezone.localdate()
-        calls = Conversation.objects.filter(organization=organization)
-        calls_today = calls.filter(started_at__date=today)
-        transfer_qs = calls.filter(outcome="handoff")
-        potential = calls.filter(
-            Q(outcome="appointment") | Q(outcome="follow_up") | Q(detected_need__icontains="fiyat")
-        )
-        duration = calls.aggregate(total=Sum("duration_seconds"))["total"] or 0
-        minutes, seconds = divmod(duration, 60)
-        hours, minutes = divmod(minutes, 60)
-        total_talk = f"{hours:02d}:{minutes:02d}" if hours else f"{minutes:02d}:{seconds:02d}"
-
-        weekly = []
-        for i in range(6, -1, -1):
-            day = today - timedelta(days=i)
-            weekly.append(
-                {
-                    "day": day.strftime("%a"),
-                    "date": day.isoformat(),
-                    "calls": calls.filter(started_at__date=day).count(),
-                }
-            )
-
-        recent = ConversationListSerializer(
-            calls.order_by("-started_at")[:6], many=True
-        ).data
-        transfers = [
-            {
-                "id": c.id,
-                "summary": c.summary,
-                "started_at": c.started_at,
-                "caller_number": c.caller_number,
-            }
-            for c in transfer_qs.order_by("-started_at")[:5]
-        ]
-
-        return Response(
-            {
-                "calls_today": calls_today.count(),
-                "remaining_minutes": float(profile.remaining_minutes) if profile else 0,
-                "potential_leads": potential.count(),
-                "transfer_requests": transfer_qs.count(),
-                "pending_requests": ServiceRequest.objects.filter(
-                    organization=organization, status="new"
-                ).count(),
-                "total_talk_time": total_talk,
-                "active_calls": calls.filter(status="live").count(),
-                "total_calls": calls.count(),
-                "weekly": weekly,
-                "recent_calls": recent,
-                "recent_transfers": transfers,
-                "ai_line": profile.ai_line if profile else "",
-                "language": profile.language if profile else "Türkçe",
-                "assistant_active": bool(
-                    profile and profile.is_active
-                ),
-            }
-        )
+        payload = build_dashboard(organization, request.query_params)
+        return Response(payload)
 
 
 class ProfileView(RetrieveUpdateAPIView):

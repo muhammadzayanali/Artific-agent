@@ -8,16 +8,19 @@ export function PageHeader({
   action?: React.ReactNode;
 }) {
   return (
-    <div className="mb-7 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+    <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
       <div className="min-w-0 animate-fade-up">
-        <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--signal)]">
-          ArtificAgent · Ops
+        <p className="font-sans text-[11px] font-medium uppercase tracking-[0.18em] text-[var(--signal)]">
+          <span className="notranslate" translate="no">
+            ArtificAgent
+          </span>{" "}
+          · Ops
         </p>
-        <h1 className="mt-2 font-display text-2xl font-semibold tracking-tight text-[var(--text)] sm:text-3xl lg:text-4xl">
+        <h1 className="mt-1 font-display text-2xl font-light tracking-tight text-[var(--text)] sm:text-[1.75rem] sm:leading-tight">
           {title}
         </h1>
         {description ? (
-          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--muted)] sm:text-[0.95rem]">
+          <p className="mt-1 max-w-2xl font-sans text-sm leading-snug text-[var(--muted)]">
             {description}
           </p>
         ) : null}

@@ -30,6 +30,8 @@ export type Agent = {
   lines: PhoneLine[];
   last_call_at: string | null;
   live_call_count: number;
+  last_synced_at?: string | null;
+  last_sync_ok?: boolean;
   updated_at: string;
 };
 
@@ -61,26 +63,112 @@ export type TranscriptTurn = {
   started_offset_seconds: number;
 };
 
-export type Dashboard = {
-  calls_today: number;
-  remaining_minutes: number;
-  potential_leads: number;
-  transfer_requests: number;
-  pending_requests: number;
-  total_talk_time: string;
-  active_calls: number;
-  total_calls: number;
-  weekly: { day: string; date: string; calls: number }[];
-  recent_calls: Conversation[];
-  recent_transfers: {
+export type DashboardTrend = {
+  direction: "up" | "down" | "flat";
+  delta_pct: number | null;
+  label: string;
+};
+
+export type DashboardAttentionItem = {
+  id: string;
+  severity: "red" | "amber";
+  title: string;
+  body: string;
+  href: string;
+};
+
+export type DashboardQueue = {
+  actionable_now: number;
+  needs_review: number;
+  oldest: {
     id: number;
-    summary: string;
-    started_at: string;
-    caller_number: string;
-  }[];
-  ai_line: string;
-  language: string;
-  assistant_active: boolean;
+    title: string;
+    created_at: string;
+    age_hours: number;
+    phone: string;
+  } | null;
+};
+
+export type DashboardKnowledge = {
+  live_entries: number;
+  pending_entries: number;
+  last_synced_at: string | null;
+  last_sync_ok: boolean;
+  agent_name: string | null;
+  agent_status: string | null;
+};
+
+export type DashboardChartPoint = {
+  date: string;
+  day: string;
+  calls: number;
+  potential: number;
+  transfer: number;
+};
+
+export type DashboardCampaign = {
+  id: number;
+  name: string;
+  status: string;
+  targets: number;
+  connect_rate: number | null;
+  conversion_rate: number | null;
+  called: number;
+  success: number;
+};
+
+export type Dashboard = {
+  period: {
+    key: string;
+    label: string;
+    start: string;
+    end: string;
+    previous_start: string;
+    previous_end: string;
+  };
+  attention: DashboardAttentionItem[];
+  metrics: {
+    calls_handled: {
+      value: number;
+      trend: DashboardTrend;
+      interpretation: string;
+    };
+    potential_rate: {
+      value: number | null;
+      trend: DashboardTrend;
+      interpretation: string;
+    };
+    transfer_rate: {
+      value: number | null;
+      trend: DashboardTrend;
+      interpretation: string;
+    };
+    minutes: {
+      consumed: number;
+      remaining: number;
+      burn_per_day: number;
+      days_remaining_at_pace: number | null;
+      burn_line: string;
+      trend: DashboardTrend;
+    };
+    leads: {
+      value: number;
+      trend: DashboardTrend;
+      interpretation: string;
+    };
+  };
+  queue: DashboardQueue;
+  knowledge: DashboardKnowledge;
+  chart: {
+    series: DashboardChartPoint[];
+    overlay: string[];
+  };
+  campaign: DashboardCampaign | null;
+  assistant: {
+    ai_line: string;
+    language: string;
+    active: boolean;
+  };
 };
 
 export type Profile = {

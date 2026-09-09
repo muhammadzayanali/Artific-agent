@@ -38,6 +38,8 @@ class Agent(models.Model):
         help_text="Aktif araçlar: knowledge, transfer, appointment, whatsapp, price_lookup",
     )
     languages = models.JSONField(default=list, blank=True)
+    last_synced_at = models.DateTimeField(null=True, blank=True)
+    last_sync_ok = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

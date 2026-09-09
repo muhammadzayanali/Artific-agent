@@ -34,9 +34,19 @@ class AgentSerializer(serializers.ModelSerializer):
             "lines",
             "last_call_at",
             "live_call_count",
+            "last_synced_at",
+            "last_sync_ok",
             "updated_at",
         )
-        read_only_fields = ("id", "voice_sample", "updated_at", "last_call_at", "live_call_count")
+        read_only_fields = (
+            "id",
+            "voice_sample",
+            "updated_at",
+            "last_call_at",
+            "live_call_count",
+            "last_synced_at",
+            "last_sync_ok",
+        )
 
     def get_voice_sample_url(self, obj):
         if not obj.voice_sample:

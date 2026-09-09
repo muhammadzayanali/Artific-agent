@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { BrandName } from "@/components/BrandName";
 import { FrequencyField } from "@/components/FrequencyField";
 import { BrandLogo } from "@/components/Logo";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -33,10 +34,10 @@ export default async function HomePage() {
           <div className="mb-8">
             <BrandLogo href={null} showWordmark={false} size={72} priority />
           </div>
-          <p className="font-display text-[clamp(3.2rem,10vw,7.5rem)] font-bold leading-[0.9] tracking-[-0.04em] text-[var(--text)]">
+          <BrandName className="font-display text-[clamp(3.2rem,10vw,7.5rem)] font-bold leading-[0.9] tracking-[-0.04em] text-[var(--text)]">
             Artific
             <span className="text-[var(--signal)]">Agent</span>
-          </p>
+          </BrandName>
           <h1 className="mt-7 max-w-2xl font-display text-[clamp(1.65rem,3.4vw,2.75rem)] font-semibold leading-[1.15] tracking-tight text-[var(--text)]">
             Telefonu cevaplayan zeka.
           </h1>
@@ -68,7 +69,10 @@ export default async function HomePage() {
       <section className="relative z-10 border-t border-[var(--line)] bg-[color-mix(in_srgb,var(--bg)_88%,transparent)] px-5 py-20 backdrop-blur-xl sm:px-8 lg:px-12">
         <div className="mx-auto max-w-6xl">
           <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--signal)]">
-            Neden ArtificAgent
+            Neden{" "}
+            <span className="notranslate" translate="no">
+              ArtificAgent
+            </span>
           </p>
           <h2 className="mt-3 max-w-2xl font-display text-3xl font-semibold tracking-tight text-[var(--text)] sm:text-4xl">
             Bilmediğiniz bir ürün değil — kaçırdığınız her aramanın cevabı.
