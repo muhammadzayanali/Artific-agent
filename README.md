@@ -49,7 +49,9 @@ npm run dev
 ### Backend (Railway)
 
 1. Create a project on [Railway](https://railway.com) from GitHub repo `Artific-agent`.
-2. **Root Directory:** `backend`
+2. **Root Directory (recommended):** `backend`  
+   If Root Directory is left empty, the repo-root `Dockerfile` + `railway.toml` build `backend/` automatically.  
+   Do **not** let Railpack analyze the monorepo root without a Dockerfile — it will fail.
 3. Add a **Postgres** plugin (recommended) — Railway sets `DATABASE_URL`.
 4. Set variables:
 
